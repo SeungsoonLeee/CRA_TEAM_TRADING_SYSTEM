@@ -131,6 +131,7 @@
     <ClCompile Include="KiwerAPI.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NemoAPI.cpp" />
+    <ClCompile Include="TradingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

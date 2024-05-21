@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "../TradingSystem/KiwerAPI.cpp"
 #include "../TradingSystem/NemoAPI.cpp"
+#include "../TradingSystem/TradingSystem.cpp"
 
 using namespace std;
 using namespace testing;
@@ -14,7 +15,20 @@ public:
 	MOCK_METHOD(int, currentPrice, (string stockCode, int minute), (override));
 };
 
-TEST(TestCaseName, TestName) {
+class TradingTest : public testing::Test {
+public:
+	MockAPI mock;
+	TradingSystem system{ &mock };
+};
 
-	EXPECT_THAT(1, Eq(1));
+TEST_F(TradingTest, LoginTest) {
+
+	EXPECT_CALL(mock, login("ABC", "123"))
+		.Times(1);
+
+	system.login("ABC", "123");
+}
+
+TEST_F(TradingTest, BuyTest) {
+
 }

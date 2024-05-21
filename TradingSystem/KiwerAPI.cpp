@@ -44,6 +44,7 @@ public:
 	{
 		return kapi.currentPrice(stockCode);
 	}
+
 private:
 	KiwerAPI kapi;
 };
