@@ -13,6 +13,7 @@ public:
 
 	void buy(string stockCode, int count, int price) {
 		// 구현 필요
+		brocker->buy(stockCode, count, price);
 	}
 
 	void sell(string stockCode, int count, int price) {
