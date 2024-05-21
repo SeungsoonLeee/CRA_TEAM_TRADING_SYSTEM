@@ -34,6 +34,23 @@ public:
 	bool sellNiceTiming(string stockCode, int count) {
 		// 현재 가격이 3연속 하락 중이면 매도한다.
 		// 구현 필요
+		int min = brocker->currentPrice(stockCode, 1);
+		int cnt = 0;
+		for (int i = 0; i < 3; i++) {
+			int cur = brocker->currentPrice(stockCode, 1);
+			if (min > cur) {
+				min = cur;
+				cnt++;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if (cnt == 3) {
+			brocker->sell(stockCode, count, min);
+		}
+
 		return 0;
 	}
 
