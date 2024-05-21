@@ -73,13 +73,18 @@ TEST_F(TradingTest, sellNiceTiming) {
 	// 가격이 내려가는 추세라면 매도
 	// 3번 연속 가격이 내려가면 내려가는 추세라고 생각
 	// StockCode:1234  /  매도량:5  /  매수금액:최소금액
-	EXPECT_CALL(mock, currentPrice("1234", 1))
+	string stockCode = "1234";
+	int stockCount = 5;
+	int checkInterval = 1;
+	
+	EXPECT_CALL(mock, currentPrice(stockCode, checkInterval))
 		.WillOnce(Return(150))
 		.WillOnce(Return(100))
-		.WillOnce(Return(50));
+		.WillOnce(Return(50))
+		.WillOnce(Return(25));
 
-	EXPECT_CALL(mock, sell("1234", 5, 50))
+	EXPECT_CALL(mock, sell(stockCode, stockCount, 25))
 		.Times(1);
 
-	system.sellNiceTiming("1234", 5);
+	system.sellNiceTiming(stockCode, stockCount);
 }
