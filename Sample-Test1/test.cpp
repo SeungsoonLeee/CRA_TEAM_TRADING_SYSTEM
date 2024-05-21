@@ -29,13 +29,27 @@ TEST_F(TradingTest, LoginTest) {
 	system.login("ABC", "123");
 }
 
-TEST_F(TradingTest, CurrentPriceTest) {
-	// 현재가를 확인하는 기능, 3번 호출하여 확인
-	EXPECT_CALL(mock, currentPrice("1234", 1))
-		.Times(3);
-	
-	// 코드구현
+TEST_F(TradingTest, BuyTest) {
 
+	EXPECT_CALL(mock, buy("ABC", 5, 150))
+		.Times(1);
+
+	system.buy("ABC", 5, 150);
+}
+
+TEST_F(TradingTest, SellTest) {
+
+	EXPECT_CALL(mock, sell("ABC", 5, 150))
+		.Times(1);
+
+	system.sell("ABC", 5, 150);
+}
+
+TEST_F(TradingTest, CurrentPriceTest) {
+	EXPECT_CALL(mock, currentPrice("1234", 1))
+		.WillOnce(Return(100));
+	
+	EXPECT_EQ(system.currentPrice("1234", 1), 100);
 }
 
 TEST_F(TradingTest, buyNiceTiming) {
@@ -50,8 +64,7 @@ TEST_F(TradingTest, buyNiceTiming) {
 	EXPECT_CALL(mock, buy("1234", 5, 150))
 		.Times(1);
 
-	// 코드구현
-
+	system.buyNiceTiming("1234", 150);
 }
 
 TEST_F(TradingTest, sellNiceTiming) {
@@ -66,6 +79,5 @@ TEST_F(TradingTest, sellNiceTiming) {
 	EXPECT_CALL(mock, sell("1234", 5, 50))
 		.Times(1);
 
-	// 코드구현
-
+	system.sellNiceTiming("1234", 5);
 }
