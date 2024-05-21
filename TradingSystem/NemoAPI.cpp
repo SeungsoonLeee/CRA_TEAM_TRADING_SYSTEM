@@ -30,7 +30,7 @@ public:
 	}
 };
 
-class InterfaceNemoAPI : public InterfaceAPI {
+class InterfaceForNemoAPI : public InterfaceAPI {
 public:
 	void login(string ID, string password) override
 	{
