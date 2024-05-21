@@ -8,7 +8,7 @@ public:
 	}
 
 	void login(string id, string pwd) {
-		// 구현 필요
+		brocker->login(id, pwd);
 	}
 
 	void buy(string stockCode, int count, int price) {
