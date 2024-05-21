@@ -17,6 +17,7 @@ public:
 
 	void sell(string stockCode, int count, int price) {
 		// 구현 필요
+		brocker->sell("ABC", 5, 150);
 	}
 
 	int currentPrice(string stockCode, int minute)
