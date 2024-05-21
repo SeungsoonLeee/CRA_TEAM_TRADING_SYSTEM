@@ -21,8 +21,7 @@ public:
 
 	int currentPrice(string stockCode, int minute)
 	{
-		// 구현 필요
-		return 0;
+		return this->brocker->currentPrice(stockCode, minute);
 	}
 
 	bool buyNiceTiming(string stockCode, int price) {
