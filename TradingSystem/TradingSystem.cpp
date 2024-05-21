@@ -27,8 +27,15 @@ public:
 
 	bool buyNiceTiming(string stockCode, int price) {
 		// 현재 가격이 3연속 상승 중이면 매수한다.
-		// 구현 필요
-		return 0;
+		int price1 = brocker->currentPrice(stockCode, 1);
+		int price2 = brocker->currentPrice(stockCode, 2);
+		int price3 = brocker->currentPrice(stockCode, 3);
+
+		if (price1 < price2 && price2 < price3) {
+			brocker->buy(stockCode, 5, price3);
+			return true;
+		}
+		return false;
 	}
 
 	bool sellNiceTiming(string stockCode, int count) {
