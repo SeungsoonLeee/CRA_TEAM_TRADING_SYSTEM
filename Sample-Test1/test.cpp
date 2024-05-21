@@ -57,8 +57,10 @@ TEST_F(TradingTest, buyNiceTiming) {
 	// 3번 연속 가격이 오르면 올라가는 추세라고 생각
 	// StockCode:1234  /  매수량:5  /  매수금액:최대금액
 	EXPECT_CALL(mock, currentPrice("1234", 1))
-		.WillOnce(Return(50))
-		.WillOnce(Return(100))
+		.WillOnce(Return(50));
+	EXPECT_CALL(mock, currentPrice("1234", 2))
+		.WillOnce(Return(100));
+	EXPECT_CALL(mock, currentPrice("1234", 3))
 		.WillOnce(Return(150));
 
 	EXPECT_CALL(mock, buy("1234", 5, 150))
